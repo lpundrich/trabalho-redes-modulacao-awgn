@@ -30,6 +30,8 @@ results/
   ber_bpsk_qpsk.png            # gráfico BER x SNR
 requirements.txt       # dependências Python
 
+```
+
 ---
 
 ## 2. Como executar o projeto
