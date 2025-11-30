@@ -155,44 +155,31 @@ Executa:
 Resultados em:
 ```results/pipeline_manchester_log.txt```
 
-### 4.2. Simulação BER × SNR – BPSK vs QPSK
+### 4.2. Simulação BER × SNR (BPSK e QPSK)
 
-Ainda no main.py, as funções:
+As funções:
 
-simular_ber(bpsk_modular, bpsk_demodular, ...)
-simular_ber(qpsk_modular, qpsk_demodular, ...)
+```simular_ber(bpsk_modular, bpsk_demodular, ...)```
+```simular_ber(qpsk_modular, qpsk_demodular, ...)```
 
+realizam:
+- Geração de 100.000 bits aleatórios
+- Modulação
+- Canal AWGN
+- Demodulação
+- Cálculo do BER para SNR = [0, 2, 4, 6, 8, 10] dB
 
-fazem:
-
-geração de 100.000 bits aleatórios
-
-modulação (BPSK ou QPSK)
-
-passagem pelo canal AWGN
-
-demodulação
-
-cálculo da BER para cada SNR em [0, 2, 4, 6, 8, 10] dB
-
-Os resultados são apresentados em:
-
-Tabela no terminal
-
-Arquivo CSV: results/ber_bpsk_qpsk.csv
-
-Gráfico: results/ber_bpsk_qpsk.png
+Resultados:
+- Tabela no terminal
+- ```results/ber_bpsk_qpsk.csv```
+- ```results/ber_bpsk_qpsk.png```
 
 ---
 
 ## 5. Vídeo de Demonstração
 
-Um vídeo curto (até 5 minutos) demonstra:
-
-Estrutura do projeto
-
-Execução do main.py
-
-Exemplo da transmissão com Manchester para diferentes SNR
-
-Gráfico comparativo BER × SNR para BPSK e QPSK
+- Estrutura do projeto
+- Execução do main.py
+- Exemplos da transmissão via Manchester com AWGN
+- Gráfico BER × SNR – BPSK vs QPSK
+- Resultados principais (interpretação geral)
