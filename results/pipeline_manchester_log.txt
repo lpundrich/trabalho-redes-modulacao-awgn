@@ -1,0 +1,27 @@
+Demonstração do pipeline completo com Manchester + canal AWGN
+Mensagem original: REDES DE COMPUTADORES 2025
+
+------------------------------------------------------------
+SNR = 2 dB
+Número de bits transmitidos: 208
+Mensagem transmitida : REDES DE COMPUTADORES 2025
+Mensagem recebida    : PEEUA D COMPUPÁLMrEC252
+BER = 0.100962
+------------------------------------------------------------
+
+------------------------------------------------------------
+SNR = 5 dB
+Número de bits transmitidos: 208
+Mensagem transmitida : REDES DE COMPUTADORES 2025
+Mensagem recebida    : RED$DD CMMPUTADORDS 2427
+BER = 0.038462
+------------------------------------------------------------
+
+------------------------------------------------------------
+SNR = 10 dB
+Número de bits transmitidos: 208
+Mensagem transmitida : REDES DE COMPUTADORES 2025
+Mensagem recebida    : REDES DE COMPUTADORES 2025
+BER = 0.000000
+------------------------------------------------------------
+
