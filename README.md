@@ -35,26 +35,32 @@ requirements.txt       # dependências Python
 ---
 
 ## 2. Como executar o projeto
-2.1. Pré-requisitos
+### 2.1. Pré-requisitos
 
-Python 3.10+ instalado
+- Python **3.10+**
+- `pip` funcionando corretamente
 
-pip funcionando
+---
 
-2.2. Criar ambiente virtual (opcional, mas recomendado)
+### 2.2. Criar ambiente virtual (recomendado)
 
 No diretório do projeto:
+
+```bash
 python -m venv .venv
+```
+
+
 # Windows (CMD):
-.\.venv\Scripts\activate.bat
+```.\.venv\Scripts\activate.bat```
 # ou PowerShell:
-.\.venv\Scripts\Activate.ps1
+```.\.venv\Scripts\Activate.ps1```
 
-2.3. Instalar dependências
-pip install -r requirements.txt
+### 2.3. Instalar dependências
+```pip install -r requirements.txt```
 
-2.4. Executar as simulações
-python main.py
+### 2.4. Executar as simulações
+```python main.py```
 
 
 A execução produz:
@@ -76,7 +82,7 @@ ber_bpsk_qpsk.png
 ---
 
 ## 3. Descrição do Funcionamento
-3.1. Conversão texto ⇄ bits (src/mensagem.py)
+### 3.1. Conversão texto ⇄ bits (src/mensagem.py)
 
 texto_para_bits(texto)
 Converte cada caractere ASCII em 8 bits (0 ou 1).
@@ -84,7 +90,7 @@ Converte cada caractere ASCII em 8 bits (0 ou 1).
 bits_para_texto(bits)
 Reconstrói a string original a partir dos bits (múltiplo de 8).
 
-3.2. Codificação de Linha – Manchester (src/codificacao_linha.py)
+### 3.2. Codificação de Linha – Manchester (src/codificacao_linha.py)
 
 manchester_codificar(bits)
 Aplica a codificação Manchester:
@@ -100,7 +106,7 @@ Reconhece os pares ideais [+1, -1] e [-1, +1]
 
 Para pares inválidos (devidos ao ruído), decide pelo sinal médio.
 
-3.3. Modulação Digital (src/modulacao.py)
+### 3.3. Modulação Digital (src/modulacao.py)
 
 BPSK
 
@@ -134,7 +140,7 @@ Agrupa bits em pares e mapeia em símbolos complexos com mapeamento Gray, normal
 qpsk_demodular(simbolos)
 Recupera os bits a partir do quadrante (parte real/imag).
 
-3.4. Canal AWGN (src/canal.py)
+### 3.4. Canal AWGN (src/canal.py)
 
 adicionar_ruido_awgn(simbolos, snr_db)
 Adiciona ruído gaussiano branco ao sinal:
@@ -154,7 +160,7 @@ Complexo (QPSK, em I e Q)
 ---
 
 ## 4. Testes, Logs e Gráficos
-4.1. Pipeline completo com Manchester
+### 4.1. Pipeline completo com Manchester
 
 No main.py, a função:
 
@@ -179,7 +185,7 @@ Os resultados são gravados em:
 
 results/pipeline_manchester_log.txt
 
-4.2. Simulação BER × SNR – BPSK vs QPSK
+### 4.2. Simulação BER × SNR – BPSK vs QPSK
 
 Ainda no main.py, as funções:
 
