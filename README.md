@@ -65,125 +65,95 @@ python -m venv .venv
 
 A execução produz:
 
-Saída no terminal com:
-
-Demonstração da transmissão com Manchester para SNR = 2, 5 e 10 dB
-
-Tabela comparativa BER × SNR para BPSK e QPSK
-
-Arquivos na pasta results/:
-
-pipeline_manchester_log.txt
-
-ber_bpsk_qpsk.csv
-
-ber_bpsk_qpsk.png
+- Demonstração da transmissão com Manchester para SNR = 2, 5 e 10 dB
+- Tabela comparativa BER × SNR para BPSK e QPSK
+- Arquivos na pasta results/:
+  - pipeline_manchester_log.txt
+  - ber_bpsk_qpsk.csv
+  - ber_bpsk_qpsk.png
 
 ---
 
 ## 3. Descrição do Funcionamento
-### 3.1. Conversão texto ⇄ bits (src/mensagem.py)
+### 3.1. Conversão texto ⇄ bits (```src/mensagem.py```)
 
-texto_para_bits(texto)
+```texto_para_bits(texto)```
 Converte cada caractere ASCII em 8 bits (0 ou 1).
 
-bits_para_texto(bits)
+```bits_para_texto(bits)```
 Reconstrói a string original a partir dos bits (múltiplo de 8).
 
-### 3.2. Codificação de Linha – Manchester (src/codificacao_linha.py)
+### 3.2. Codificação de Linha – Manchester (```src/codificacao_linha.py```)
 
-manchester_codificar(bits)
-Aplica a codificação Manchester:
+Codificação
+```bit 1 → [+1, -1]```
+```bit 0 → [-1, +1]```
 
-bit 1 → [+1, -1]
+```manchester_codificar(bits)```
+Gera a sequência de níveis (+1/-1).
 
-bit 0 → [-1, +1]
-
-manchester_decodificar(niveis)
+```manchester_decodificar(niveis)```
 Faz o processo inverso, com decisão robusta ao ruído:
-
-Reconhece os pares ideais [+1, -1] e [-1, +1]
-
-Para pares inválidos (devidos ao ruído), decide pelo sinal médio.
+- Reconhece os pares ideais [+1, -1] e [-1, +1]
+- Para pares inválidos (devidos ao ruído), decide pelo sinal médio.
 
 ### 3.3. Modulação Digital (src/modulacao.py)
 
 BPSK
 
-bpsk_modular(bits)
+```bpsk_modular(bits)```
 Mapeia bits em símbolos reais:
 
-0 → -1
+```0 → -1```
+```1 → +1```
 
-1 → +1
-
-bpsk_demodular(simbolos)
+```bpsk_demodular(simbolos)```
 Faz decisão por limiar:
 
-símbolo > 0 → 1
-
-símbolo ≤ 0 → 0
+```símbolo > 0 → 1```
+```símbolo ≤ 0 → 0```
 
 QPSK
 
-qpsk_modular(bits)
-Agrupa bits em pares e mapeia em símbolos complexos com mapeamento Gray, normalizado por 
-1
-/
-2
-1/
-2
-	​
+```qpsk_modular(bits)```
+- Agrupa bits em pares
+- Usa mapeamento Gray
+- Normaliza por 1/√2 para energia unitária
 
- para energia média unitária.
+```qpsk_demodular(simbolos)```
+- Recupera os bits a partir do quadrante (parte real/imag).
 
-qpsk_demodular(simbolos)
-Recupera os bits a partir do quadrante (parte real/imag).
 
-### 3.4. Canal AWGN (src/canal.py)
+### 3.4. Canal AWGN (```src/canal.py```)
 
-adicionar_ruido_awgn(simbolos, snr_db)
+```adicionar_ruido_awgn(simbolos, snr_db)```
 Adiciona ruído gaussiano branco ao sinal:
-
-Converte SNR de dB para linear
-
-Calcula a energia média dos símbolos
-
-Define a variância do ruído em função da SNR
-
-Gera ruído:
-
-Real (BPSK)
-
-Complexo (QPSK, em I e Q)
-
+- Converte SNR de dB para linear
+- Calcula a energia média dos símbolos
+- Define a variância do ruído em função da SNR
+- Gera ruído:
+  - Real (BPSK)
+  - Complexo (QPSK, em I e Q)
 ---
 
 ## 4. Testes, Logs e Gráficos
 ### 4.1. Pipeline completo com Manchester
 
-No main.py, a função:
+A função:
 
-transmitir_mensagem_manchester(mensagem, snr_db)
+```transmitir_mensagem_manchester(mensagem, snr_db)```
 
+Executa:
+1. texto → bits
+1. bits → Manchester
+3. canal AWGN
+4. decisão de nível
+5. decodificação
+6. bits → texto
+7. cálculo da BER
 
-executa o pipeline:
-
-mensagem → bits
-
-bits → codificação Manchester (+1/-1)
-
-transmissão pelo canal AWGN (SNR em dB)
-
-decisão de nível
-
-decodificação Manchester
-
-reconstrução do texto e cálculo da BER
-
-Os resultados são gravados em:
-
-results/pipeline_manchester_log.txt
+Resultados em:
+```results/pipeline_manchester_log.txt```
 
 ### 4.2. Simulação BER × SNR – BPSK vs QPSK
 
