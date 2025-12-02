@@ -2,10 +2,15 @@
 
 1. Mensagem Texto ⇄ Bits
 ```text
-/mensagem.py
+mensagem.py
 ```
 
 Este módulo cuida da interface entre o mundo humano (texto) e o mundo digital (bits).
+
+![mennsagem](mensagem.png)
+
+
+---
 **Função: texto_para_bits(texto)**
 Objetivo: Transformar a string "REDES DE COMPUTADORES 2025" em uma lista de 0s e 1s.
 Passos:
