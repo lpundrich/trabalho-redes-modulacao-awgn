@@ -7,7 +7,7 @@ mensagem.py
 
 Este módulo cuida da interface entre o mundo humano (texto) e o mundo digital (bits).
 
-![mennsagem](mensagem.png)
+![mensagem](img/mensagem.png)
 
 
 ---
