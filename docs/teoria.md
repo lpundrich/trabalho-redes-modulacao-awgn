@@ -36,7 +36,7 @@ O canal AWGN implementado é o modelo clássico de um canal com:
 - branco (mesma potência em todas as frequências)
 - aditivo (soma ao sinal transmitido)
 O parâmetro que controla a intensidade do ruído é a SNR (Signal-to-Noise Ratio), que aqui foi usado decibéis:
-    〖"SNR" 〗_dB=10〖log⁡〗_10 (P_s/P_n )
+    ![SNR](img/SNR.png)
 
 - SNR baixa (0–2 dB) → muito ruído → BER alta
 - SNR alta (8–10 dB) → pouco ruído → BER baixa, mensagem quase perfeita

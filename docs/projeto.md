@@ -48,9 +48,7 @@ flowchart TD
 ## 5. Reconstrução do texto e BER
 - Os bits recebidos são agrupados de 8 em 8 e convertidos de volta para caracteres.
 - Compara-se bit a bit com a sequência original → calcula a BER (Bit Error Rate):
-    ```text
-    BER = (número de bits errados) / (número total de bits)
-    ```
+    ![BER](img/BERformula.png)
 
 - Os resultados para SNR = 2, 5, 10 dB vão para:
     - terminal
