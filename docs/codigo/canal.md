@@ -31,6 +31,8 @@ def adicionar_ruido_awgn(simbolos: np.ndarray, snr_db: float) -> np.ndarray:
     return simbolos + ruido
 ```
 
+---
+
 
 **adicionar_ruido_awgn(simbolos, snr_db)**
 
