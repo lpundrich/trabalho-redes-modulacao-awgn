@@ -159,20 +159,19 @@ def transmitir_mensagem_manchester(mensagem: str, snr_db: float):
     - adicionar_ruido_awgn soma ruído gaussiano controlado por snr_db.
     - Agora você tem um sinal “sujo”: os valores não são mais exatamente +1 e −1, são algo tipo 0.8, −1.2, etc.
 
-<br>
 
 - **Decisão de nível**
-```python
-# decisão de nível
+    ```python
+    # decisão de nível
     niveis_rx = [1 if v > 0 else -1 for v in niveis_rx_continuo]
-```
+    ```
 
-Regra: se o valor > 0 → decide que é +1, se ≤ 0 → decide que é −1.
-Isso é a decisão de símbolo com limiar 0.
+    Regra: se o valor > 0 → decide que é +1, se ≤ 0 → decide que é −1.
+    Isso é a decisão de símbolo com limiar 0.
 <br>
 
 
-- **Decodificação Manchester → bits**
+- **Decodificação Manchester → bits / Bits → texto**
     ```python
     # decodificação
     bits_rx = manchester_decodificar(niveis_rx)
@@ -181,7 +180,6 @@ Isso é a decisão de símbolo com limiar 0.
 
     - manchester_decodificar pega os pares de níveis e decide se foi 0 ou 1.
     - Ele também é robusto a erro: se o par não bater justamente com o ideal, analisa o valor médio.
-- **Bits → texto**
     - bits_para_texto agrupa os bits de 8 em 8 e reconstrói a string final.
 <br>
 
