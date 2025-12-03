@@ -8,7 +8,7 @@ flowchart TD
 
     A[Inicio] --> B[Mensagem de texto: 'REDES DE COMPUTADORES 2025']
     B --> C[Conversao texto -> bits (ASCII, 8 bits por caractere)]
-    C --> D[Codificacao Manchester 0->(-1,+1), 1→(+1,-1)]
+    C --> D[Codificacao Manchester: 0->(-1,+1), 1->(+1,-1)]
     D --> E[Modulacao digital]
 
     E --> E1[BPSK (1 bit por simbolo)]
@@ -20,10 +20,10 @@ flowchart TD
     F --> G[Demodulacao]
     G --> H[Decodificacao Manchester]
     H --> I[Bits recebidos]
-    I --> J[Conversão bits -> texto]
+    I --> J[Conversao bits -> texto]
     J --> K[Calculo da BER]
     K --> L[Fim]
-```
+
 
 
 
