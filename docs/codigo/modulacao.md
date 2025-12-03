@@ -88,12 +88,13 @@ def qpsk_demodular(simbolos: np.ndarray) -> List[int]:
     return bits
 ```
 
+---
 
 1. **BPSK**
 
 **bpsk_modular(bits)**
 Objetivo:
-Mapear cada bit em um símbolo real:
+ Mapear cada bit em um símbolo real:
 - 0 → −1
 - 1 → +1
 
@@ -116,6 +117,7 @@ Entrada: [0,1,0,1,...]
 Saída: [-1, +1, -1, +1, ...] (como numpy.array)
 Esses símbolos são passados para adicionar_ruido_awgn.
 
+---
 
 **bpsk_demodular(simbolos)**
 Objetivo:
@@ -135,6 +137,7 @@ def bpsk_demodular(simbolos: np.ndarray) -> List[int]:
     return bits.tolist()
 ```
 
+---
 
 2. **QPSK**
 Aqui entram símbolos complexos e 2 bits por símbolo.
@@ -186,6 +189,7 @@ def qpsk_modular(bits: List[int]) -> np.ndarray:
     return np.array(simbolos, dtype=complex)
 ```
 
+---
 
 **qpsk_demodular(simbolos)**
 Objetivo:

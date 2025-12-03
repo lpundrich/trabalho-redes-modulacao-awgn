@@ -101,17 +101,17 @@ media = sum(par) / 2
 bits.append(1 if media > 0 else 0)
 ```
 
-    Isso torna a decodificação robusta ao ruído do canal AWGN.
+Isso torna a decodificação robusta ao ruído do canal AWGN.
 
 
 3. Retorna a lista de bits decodificados.
 
-    Entrada:
-    Uma sequência com ruído já decidido para +1/-1, tipo:
-    ```[+1, -1, -1, +1, +1, -1, ...]```
+Entrada:
+Uma sequência com ruído já decidido para +1/-1, tipo:
+```[+1, -1, -1, +1, +1, -1, ...]```
 
-    Saída:
-    ```[1, 0, 1, ...]```
+Saída:
+```[1, 0, 1, ...]```
 
-    No main.py, esses bits vão para bits_para_texto e para o cálculo de BER.
+No main.py, esses bits vão para bits_para_texto e para o cálculo de BER.
 
