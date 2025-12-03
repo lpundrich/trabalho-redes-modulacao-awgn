@@ -208,6 +208,8 @@ def main():
 
 Garante que a pasta results/ exista (cria se não existir).
 
+<br>
+
 5.1. Parte 1 - Demonstração Manchester
 ```python
     # ============================================================

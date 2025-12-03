@@ -3,6 +3,36 @@
 O trabalho implementa, em Python, uma cadeia completa de transmissão digital, parecida com o que acontece num sistema real de comunicação (modem, Wi-Fi, rádio digital):
 texto → bits → codificação Manchester → modulação (BPSK/QPSK) → canal AWGN → demodulação → decodificação Manchester → bits → texto + cálculo da BER
 
+```mermaid
+flowchart TD
+
+    A[Início] --> B[Mensagem de Texto<br>(ex: 'REDES DE COMPUTADORES 2025')]
+    B --> C[Conversão Texto → Bits<br>(ASCII 8 bits por caractere)]
+    C --> D[Codificação Manchester<br>0 → (-1,+1)<br>1 → (+1,-1)]
+    D --> E[Modulação Digital]
+    
+    E -->|BPSK| E1[BPSK<br>0 → -1<br>1 → +1]
+    E -->|QPSK| E2[QPSK<br>2 bits → símbolo complexo]
+
+    E1 --> F[Canal AWGN<br>Adição de ruído<br>SNR = 0–10 dB]
+    E2 --> F
+
+    F --> G[Demodulação]
+    G -->|BPSK| G1[Decisão por limiar<br>x>0 → 1<br>x<=0 → 0]
+    G -->|QPSK| G2[Decisão por quadrante<br>I/Q]
+
+    G1 --> H[Decodificação Manchester<br>Pares (+1,-1) ou (-1,+1)]
+    G2 --> H
+    
+    H --> I[Bits Recebidos]
+    I --> J[Conversão Bits → Texto]
+    J --> K[Comparação TX vs RX<br>Cálculo da BER]
+
+    K --> L[Fim]
+```
+
+
+
 ## 1. Geração de mensagem
 - Usa uma mensagem de texto: REDES DE COMPUTADORES 2025.
 - Converte cada caractere para 8 bits (ASCII): Ex.: 'R' → 01010010.
