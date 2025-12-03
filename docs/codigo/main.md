@@ -129,12 +129,13 @@ def transmitir_mensagem_manchester(mensagem: str, snr_db: float):
 ```
 
 - **Texto → bits**
-    - Usa texto_para_bits (de src/mensagem.py).
-    - Cada caractere vira 8 bits (ASCII).
-
 ```python
 bits_tx = texto_para_bits(mensagem)
 ```
+<br>
+    - Usa texto_para_bits (de src/mensagem.py).
+    - Cada caractere vira 8 bits (ASCII).
+
 
 
 
@@ -171,7 +172,7 @@ Isso é a decisão de símbolo com limiar 0.
 - **Decodificação Manchester → bits**
     - manchester_decodificar pega os pares de níveis e decide se foi 0 ou 1.
     - Ele também é robusto a erro: se o par não bater justamente com o ideal, analisa o valor médio.
-- Bits → texto
+- **Bits → texto**
     - bits_para_texto agrupa os bits de 8 em 8 e reconstrói a string final.
 ```python
  # decodificação
