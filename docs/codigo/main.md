@@ -129,15 +129,14 @@ def transmitir_mensagem_manchester(mensagem: str, snr_db: float):
 ```
 
 - Texto → bits
+    - Usa texto_para_bits (de src/mensagem.py).
+    - Cada caractere vira 8 bits (ASCII).
 
 ```python
 bits_tx = texto_para_bits(mensagem)
 ```
 
-    - Usa texto_para_bits (de src/mensagem.py).
-    - Cada caractere vira 8 bits (ASCII).
-
-
+---
 
 - Bits → codificação Manchester (níveis +1/-1)
     - manchester_codificar pega cada bit e transforma em dois níveis:
@@ -145,16 +144,20 @@ bits_tx = texto_para_bits(mensagem)
         - 1 → [+1, -1]
     - niveis_tx_np é só para transformar em array NumPy para facilitar o uso no canal.
 
-```niveis_tx = manchester_codificar(bits_tx)```
-```niveis_tx_np = np.array(niveis_tx, dtype=float)```
-
+```python
+niveis_tx = manchester_codificar(bits_tx)
+niveis_tx_np = np.array(niveis_tx, dtype=float)
+```
+---
 
 - Passa pelo canal AWGN
     - adicionar_ruido_awgn soma ruído gaussiano controlado por snr_db.
     - Agora você tem um sinal “sujo”: os valores não são mais exatamente +1 e −1, são algo tipo 0.8, −1.2, etc.
 
-```niveis_rx_continuo = adicionar_ruido_awgn(niveis_tx_np, snr_db)```
-
+```python
+niveis_rx_continuo = adicionar_ruido_awgn(niveis_tx_np, snr_db)
+```
+---
 
 - Decisão de nível
 Regra: se o valor > 0 → decide que é +1, se ≤ 0 → decide que é −1.
@@ -163,7 +166,7 @@ Isso é a decisão de símbolo com limiar 0.
 # decisão de nível
     niveis_rx = [1 if v > 0 else -1 for v in niveis_rx_continuo]
 ```
-
+---
 
 - Decodificação Manchester → bits
     - manchester_decodificar pega os pares de níveis e decide se foi 0 ou 1.
@@ -175,7 +178,7 @@ Isso é a decisão de símbolo com limiar 0.
     bits_rx = manchester_decodificar(niveis_rx)
     mensagem_rx = bits_para_texto(bits_rx)
 ```
-
+---
 
 - Cálculo da BER da mensagem
     - Compara bits_tx (originais) com bits_rx (decodificados) → BER.
