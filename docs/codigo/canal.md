@@ -95,3 +95,51 @@ onde:
 - SNR: relação sinal-ruído
 Isso define quanta interferência queremos adicionar.
 
+
+---
+4. Gera ruído de acordo com o tipo de dado
+```python
+if np.iscomplexobj(simbolos):
+        # Para sinal complexo, ruído em I e Q com sigma2/2 cada
+        ruido_real = np.sqrt(sigma2 / 2) * np.random.randn(len(simbolos))
+        ruido_imag = np.sqrt(sigma2 / 2) * np.random.randn(len(simbolos))
+        ruido = ruido_real + 1j * ruido_imag
+```
+
+Quando a modulação é QPSK, os símbolos contém números complexos.
+AWGN para sinais complexos:
+- ruído na componente I (real)
+- ruído na componente Q (imaginária)
+- variâncias iguais (sigma2/2 cada)
+
+
+```python
+else:
+        # Para BPSK (real)
+        ruido = np.sqrt(sigma2) * np.random.randn(len(simbolos))
+```
+
+Para sinal real (BPSK, Manchester):
+- símbolos são reais
+- ruído também é real
+- variância total = sigma2
+
+
+---
+5. Retorna os símbolos com ruído
+```python
+return simbolos + ruido
+```
+
+O ruído é aditivo, então o canal final é:
+y = x + n
+
+onde:
+	x = símbolo transmitido
+	n = ruído AWGN
+	y = símbolo recebido
+
+Esse valor y vai depois para:
+- limiar de decisão (+0/-0) para Manchester
+- demoduladores BPSK e QPSK
+
