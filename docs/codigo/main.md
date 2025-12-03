@@ -148,7 +148,7 @@ def transmitir_mensagem_manchester(mensagem: str, snr_db: float):
         - 0 → [-1, +1]
         - 1 → [+1, -1]
     - niveis_tx_np é só para transformar em array NumPy para facilitar o uso no canal.
-
+<br>
 
 
 - **Passa pelo canal AWGN**
@@ -159,42 +159,45 @@ def transmitir_mensagem_manchester(mensagem: str, snr_db: float):
     - adicionar_ruido_awgn soma ruído gaussiano controlado por snr_db.
     - Agora você tem um sinal “sujo”: os valores não são mais exatamente +1 e −1, são algo tipo 0.8, −1.2, etc.
 
-
+<br>
 
 - **Decisão de nível**
-Regra: se o valor > 0 → decide que é +1, se ≤ 0 → decide que é −1.
-Isso é a decisão de símbolo com limiar 0.
 ```python
 # decisão de nível
     niveis_rx = [1 if v > 0 else -1 for v in niveis_rx_continuo]
 ```
 
+Regra: se o valor > 0 → decide que é +1, se ≤ 0 → decide que é −1.
+Isso é a decisão de símbolo com limiar 0.
+<br>
+
 
 - **Decodificação Manchester → bits**
+    ```python
+    # decodificação
+    bits_rx = manchester_decodificar(niveis_rx)
+    mensagem_rx = bits_para_texto(bits_rx)
+    ```
+
     - manchester_decodificar pega os pares de níveis e decide se foi 0 ou 1.
     - Ele também é robusto a erro: se o par não bater justamente com o ideal, analisa o valor médio.
 - **Bits → texto**
     - bits_para_texto agrupa os bits de 8 em 8 e reconstrói a string final.
-```python
- # decodificação
-    bits_rx = manchester_decodificar(niveis_rx)
-    mensagem_rx = bits_para_texto(bits_rx)
-```
+<br>
 
 
 - **Cálculo da BER da mensagem**
-    - Compara bits_tx (originais) com bits_rx (decodificados) → BER.
-    - Também retorna o número de bits, para mostrar no log.
-
-```python
- # BER
+    ```python
+    # BER
     ber = calcular_ber(bits_tx, bits_rx)
 
     return mensagem_rx, ber, len(bits_tx)
-```
+    ```
+    - Compara bits_tx (originais) com bits_rx (decodificados) → BER.
+    - Também retorna o número de bits, para mostrar no log.
 
 ---
-
+<br>
 
 5. **Função main()**
 
