@@ -150,6 +150,7 @@ def transmitir_mensagem_manchester(mensagem: str, snr_db: float):
     - niveis_tx_np é só para transformar em array NumPy para facilitar o uso no canal.
 
 <br>
+
 - **Passa pelo canal AWGN**
     ```python
     niveis_rx_continuo = adicionar_ruido_awgn(niveis_tx_np, snr_db)
@@ -157,7 +158,7 @@ def transmitir_mensagem_manchester(mensagem: str, snr_db: float):
 
     - adicionar_ruido_awgn soma ruído gaussiano controlado por snr_db.
     - Agora você tem um sinal “sujo”: os valores não são mais exatamente +1 e −1, são algo tipo 0.8, −1.2, etc.
-    
+
 <br>
 
 - **Decisão de nível**
@@ -259,4 +260,83 @@ Pra cada SNR (2, 5, 10 dB):
     - mensagem recebida
     - BER
 - Imprime esse bloco no terminal e grava no log em results/pipeline_manchester_log.txt.
+
+<br>
+
+5.2. Parte 2 - Simulação BER × SNR (BPSK x QPSK)
+```python
+# ============================================================
+    # Parte 2 — BER BPSK vs QPSK
+    # ============================================================
+
+    snrs_db = [0, 2, 4, 6, 8, 10]
+    num_bits = 100_000
+
+    bers_bpsk = simular_ber(bpsk_modular, bpsk_demodular, snrs_db, num_bits, "BPSK")
+    bers_qpsk = simular_ber(qpsk_modular, qpsk_demodular, snrs_db, num_bits, "QPSK")
+```
+
+- Define o vetor de SNRs e o número de bits.
+- Chama simular_ber duas vezes:
+    - uma com as funções de BPSK
+    - outra com as funções de QPSK
+
+<br>
+
+```python
+print("\n" + "=" * 70)
+    print("TABELA COMPARATIVA BER × SNR")
+    print("=" * 70)
+    print("SNR (dB) |   BER BPSK    |   BER QPSK")
+    print("---------------------------------------------")
+```
+
+- Imprime uma tabela comparando as duas BERs.
+- Essa tabela é exatamente a informação que você coloca em relatório e analisa.
+
+<br>
+
+```python
+ # salva CSV
+    with open("results/ber_bpsk_qpsk.csv", "w", newline="", encoding="utf-8") as fcsv:
+        writer = csv.writer(fcsv)
+        writer.writerow(["SNR_dB", "BER_BPSK", "BER_QPSK"])
+        for snr, ber_b, ber_q in zip(snrs_db, bers_bpsk, bers_qpsk):
+            writer.writerow([snr, ber_b, ber_q])
+```
+
+Salva a tabela em CSV → dá pra abrir em Excel/Sheets depois se quiser.
+
+<br>
+
+
+5.3. Parte 3 - Gráfico BER × SNR
+```python
+# ============================================================
+    # Gráfico BPSK vs QPSK
+    # ============================================================
+
+    plt.figure()
+    plt.semilogy(snrs_db, bers_bpsk, marker="o", label="BPSK")
+    plt.semilogy(snrs_db, bers_qpsk, marker="s", label="QPSK")
+    plt.xlabel("SNR (dB)")
+    plt.ylabel("BER")
+    plt.title("BER × SNR - BPSK vs QPSK")
+    plt.grid(True, which="both")
+    plt.legend()
+
+    plt.savefig("results/ber_bpsk_qpsk.png", dpi=300)
+    plt.close()  # evita erro em ambientes sem GUI
+
+
+if __name__ == "__main__":
+    main()
+```
+
+- Cria o gráfico em escala log (semilogy).
+- Plota as duas curvas: BPSK e QPSK.
+- Salva o gráfico em results/ber_bpsk_qpsk.png.
+- Fecha a figura (não depende de ambiente gráfico pra rodar).
+Esse gráfico é a ilustração visual de tudo que você estudou na parte de modulação: melhora de BER com SNR, equivalência de desempenho entre BPSK e QPSK em AWGN, etc.
+
 
