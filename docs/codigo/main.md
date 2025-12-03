@@ -128,7 +128,7 @@ def transmitir_mensagem_manchester(mensagem: str, snr_db: float):
     return mensagem_rx, ber, len(bits_tx)
 ```
 
-- Texto → bits
+- **Texto → bits**
     - Usa texto_para_bits (de src/mensagem.py).
     - Cada caractere vira 8 bits (ASCII).
 
@@ -136,9 +136,9 @@ def transmitir_mensagem_manchester(mensagem: str, snr_db: float):
 bits_tx = texto_para_bits(mensagem)
 ```
 
----
 
-- Bits → codificação Manchester (níveis +1/-1)
+
+- **Bits → codificação Manchester (níveis +1/-1)**
     - manchester_codificar pega cada bit e transforma em dois níveis:
         - 0 → [-1, +1]
         - 1 → [+1, -1]
