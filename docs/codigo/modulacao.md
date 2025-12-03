@@ -7,7 +7,8 @@ Funções que mapeiam bits em símbolos e fazem o processo inverso.
 
 1. **BPSK**
 
-**bpsk_modular(bits)**
+**bpsk_modular**
+
 Objetivo:
  Mapear cada bit em um símbolo real:
 - 0 → −1
@@ -40,7 +41,8 @@ Esses símbolos são passados para adicionar_ruido_awgn.
 
 ---
 
-**bpsk_demodular(simbolos)**
+**bpsk_demodular**
+
 Objetivo:
 Converter os símbolos ruidosos de volta em bits.
 Regra:
@@ -63,7 +65,8 @@ def bpsk_demodular(simbolos: np.ndarray) -> List[int]:
 2. **QPSK**
 Aqui entram símbolos complexos e 2 bits por símbolo.
 
-**qpsk_modular(bits)**
+**qpsk_modular**
+
 Objetivo:
 Agrupar bits de 2 em 2 e mapear em um ponto na constelação QPSK (I+jQ).
 Passos:
@@ -112,7 +115,8 @@ def qpsk_modular(bits: List[int]) -> np.ndarray:
 
 ---
 
-**qpsk_demodular(simbolos)**
+**qpsk_demodular**
+
 Objetivo:
 Pegar os símbolos complexos (com ruído) e voltar para os pares de bits.
 Passos típicos:
