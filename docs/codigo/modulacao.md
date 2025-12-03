@@ -36,7 +36,9 @@ def bpsk_modular(bits: List[int]) -> np.ndarray:
 ```
 
 Entrada: [0,1,0,1,...]
+
 Saída: [-1, +1, -1, +1, ...] (como numpy.array)
+
 Esses símbolos são passados para adicionar_ruido_awgn.
 
 ---
