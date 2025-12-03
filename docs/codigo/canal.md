@@ -132,12 +132,13 @@ return simbolos + ruido
 ```
 
 O ruído é aditivo, então o canal final é:
+
 y = x + n
 
 onde:
-	x = símbolo transmitido
-	n = ruído AWGN
-	y = símbolo recebido
+x = símbolo transmitido
+n = ruído AWGN
+y = símbolo recebido
 
 Esse valor y vai depois para:
 - limiar de decisão (+0/-0) para Manchester
