@@ -65,7 +65,7 @@ def manchester_decodificar(niveis):
     return bits
 ```
 
-## Função: manchester_codificar ##
+**manchester_codificar**
 Objetivo:
 Transformar cada bit em um par de níveis +1/−1 de acordo com a Manchester.
 Regra utilizada:
@@ -73,7 +73,7 @@ Regra utilizada:
 - bit 1 → [+1, -1]
 
 Entrada:
-``` [0, 1, 0, 1, ...]```
+```[0, 1, 0, 1, ...]```
 
 Saída:
 ```[-1, +1, +1, -1, +1, +1, -1, ...]```
@@ -81,22 +81,21 @@ Saída:
 No main.py, esse resultado é transformado em np.array e mandado para o canal AWGN.
 
 
-**Função: manchester_decodificar(niveis)**
+**manchester_decodificar(niveis)**
 Objetivo:
 Fazer o caminho inverso: pegar os pares de níveis (+1/−1) e recuperar os bits.
-Passos típicos:
+Passos:
 1. Caminhar de 2 em 2 elementos:
 2. Decidir o bit:
-    •	Se par == [-1, +1] → bit 0
-    •	Se par == [+1, -1] → bit 1
-    •	Se for algo do tipo [1, 1] ou [-1, -1] (por causa do ruído), faz:
+    - Se par == [-1, +1] → bit 0
+    - Se par == [+1, -1] → bit 1
+    - Se for algo do tipo [1, 1] ou [-1, -1] (por causa do ruído), faz:
 
-        ```python
-        media = sum(par) / 2
-        bits.append(1 if media > 0 else 0)
-        ```
-
-        Isso torna a decodificação robusta ao ruído do canal AWGN.
+```python
+media = sum(par) / 2
+bits.append(1 if media > 0 else 0)
+```
+    Isso torna a decodificação robusta ao ruído do canal AWGN.
 
 3. Retorna a lista de bits decodificados.
 
