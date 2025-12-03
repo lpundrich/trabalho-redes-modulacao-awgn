@@ -63,6 +63,7 @@ def bpsk_demodular(simbolos: np.ndarray) -> List[int]:
 ```
 
 ---
+<br>
 
 2. **QPSK**
 
