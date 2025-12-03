@@ -37,7 +37,6 @@ def adicionar_ruido_awgn(simbolos: np.ndarray, snr_db: float) -> np.ndarray:
 Objetivo:
 Somar ruído gaussiano nos símbolos, usando um dado valor de SNR em dB.
 
-1. 
 
 ```python
 def adicionar_ruido_awgn(simbolos: np.ndarray, snr_db: float) -> np.ndarray:
@@ -49,11 +48,11 @@ Recebe:
 - snr_db: valor da SNR desejada em decibéis
 
 
-2. 
+1. ## Converter SNR de dB para linear ##
 ```python
 snr_linear = 10 ** (snr_db / 10)
 ```
-Converter SNR de dB para linear, aplicando a fórmula:
+Fórmula:
 
 ![fórmulaSNR dB para linear](img/SNRlinear.png)
 
@@ -61,13 +60,12 @@ Converter SNR de dB para linear, aplicando a fórmula:
 ![exemplos SNR dB para linear](img/exSNRlinear.png)
 
 
-3. 
+2. ## Calcula a energia média dos símbolos ##
 ```python
 # Energia média dos símbolos (vale para BPSK e QPSK normalizada)
     energia_simbolo = np.mean(np.abs(simbolos) ** 2)
 ```
 
-Calcula a energia média dos símbolos
 - Para BPSK, seus símbolos são −1 e +1
     → energia de cada símbolo = 1
     → energia média = 1
@@ -77,13 +75,13 @@ Calcula a energia média dos símbolos
 Logo, isso funciona tanto para BPSK quanto para QPSK.
 
 
-4. 
+4. ## Calcula a variância do ruído ##
 ```python
 # Variância total do ruído
     sigma2 = energia_simbolo / snr_linear
 ```
 
-Calcula a variância do ruído, de acordo com a fórmula que vem do modelo de canal AWGN:
+Fórmula que vem do modelo de canal AWGN:
 
 ![AWGN](img/formulaAWGN.png)
 
