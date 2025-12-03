@@ -95,7 +95,8 @@ Passos:
 media = sum(par) / 2
 bits.append(1 if media > 0 else 0)
 ```
-    Isso torna a decodificação robusta ao ruído do canal AWGN.
+---
+Isso torna a decodificação robusta ao ruído do canal AWGN.
 
 3. Retorna a lista de bits decodificados.
 
