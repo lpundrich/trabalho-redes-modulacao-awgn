@@ -65,6 +65,7 @@ def bpsk_demodular(simbolos: np.ndarray) -> List[int]:
 ---
 
 2. **QPSK**
+
 Aqui entram símbolos complexos e 2 bits por símbolo.
 
 **qpsk_modular**
