@@ -148,7 +148,7 @@ bits_tx = texto_para_bits(mensagem)
 niveis_tx = manchester_codificar(bits_tx)
 niveis_tx_np = np.array(niveis_tx, dtype=float)
 ```
----
+
 
 - **Passa pelo canal AWGN**
     - adicionar_ruido_awgn soma ruído gaussiano controlado por snr_db.
@@ -157,7 +157,7 @@ niveis_tx_np = np.array(niveis_tx, dtype=float)
 ```python
 niveis_rx_continuo = adicionar_ruido_awgn(niveis_tx_np, snr_db)
 ```
----
+
 
 - **Decisão de nível**
 Regra: se o valor > 0 → decide que é +1, se ≤ 0 → decide que é −1.
@@ -166,7 +166,7 @@ Isso é a decisão de símbolo com limiar 0.
 # decisão de nível
     niveis_rx = [1 if v > 0 else -1 for v in niveis_rx_continuo]
 ```
----
+
 
 - **Decodificação Manchester → bits**
     - manchester_decodificar pega os pares de níveis e decide se foi 0 ou 1.
@@ -178,7 +178,7 @@ Isso é a decisão de símbolo com limiar 0.
     bits_rx = manchester_decodificar(niveis_rx)
     mensagem_rx = bits_para_texto(bits_rx)
 ```
----
+
 
 - **Cálculo da BER da mensagem**
     - Compara bits_tx (originais) com bits_rx (decodificados) → BER.
@@ -190,3 +190,16 @@ Isso é a decisão de símbolo com limiar 0.
 
     return mensagem_rx, ber, len(bits_tx)
 ```
+
+---
+
+
+5. **Função main()**
+
+```python
+def main():
+
+    os.makedirs("results", exist_ok=True)
+```
+
+Garante que a pasta results/ exista (cria se não existir).
