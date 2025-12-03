@@ -132,9 +132,9 @@ def transmitir_mensagem_manchester(mensagem: str, snr_db: float):
 ```python
 bits_tx = texto_para_bits(mensagem)
 ```
-<br>
-    - Usa texto_para_bits (de src/mensagem.py).
-    - Cada caractere vira 8 bits (ASCII).
+
+→ Usa texto_para_bits (de src/mensagem.py).
+→ Cada caractere vira 8 bits (ASCII).
 
 
 
