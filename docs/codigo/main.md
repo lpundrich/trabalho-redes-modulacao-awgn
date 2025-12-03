@@ -135,29 +135,30 @@ def transmitir_mensagem_manchester(mensagem: str, snr_db: float):
     ```
     - Usa texto_para_bits (de src/mensagem.py).
     - Cada caractere vira 8 bits (ASCII).
-
+<br>
 
 
 
 - **Bits → codificação Manchester (níveis +1/-1)**
+    ```python
+    niveis_tx = manchester_codificar(bits_tx)
+    niveis_tx_np = np.array(niveis_tx, dtype=float)
+    ```
     - manchester_codificar pega cada bit e transforma em dois níveis:
         - 0 → [-1, +1]
         - 1 → [+1, -1]
     - niveis_tx_np é só para transformar em array NumPy para facilitar o uso no canal.
 
-```python
-niveis_tx = manchester_codificar(bits_tx)
-niveis_tx_np = np.array(niveis_tx, dtype=float)
-```
 
 
 - **Passa pelo canal AWGN**
+    ```python
+    niveis_rx_continuo = adicionar_ruido_awgn(niveis_tx_np, snr_db)
+    ```
+
     - adicionar_ruido_awgn soma ruído gaussiano controlado por snr_db.
     - Agora você tem um sinal “sujo”: os valores não são mais exatamente +1 e −1, são algo tipo 0.8, −1.2, etc.
 
-```python
-niveis_rx_continuo = adicionar_ruido_awgn(niveis_tx_np, snr_db)
-```
 
 
 - **Decisão de nível**
