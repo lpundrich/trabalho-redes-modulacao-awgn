@@ -6,21 +6,15 @@ texto → bits → codificação Manchester → modulação (BPSK/QPSK) → cana
 ```mermaid
 flowchart TD
 
-    A[Inicio] --> B[Mensagem de texto: 'REDES DE COMPUTADORES 2025']
-    B --> C[Conversao texto -> bits (ASCII, 8 bits por caractere)]
-    C --> D[Codificacao Manchester: 0->(-1,+1), 1->(+1,-1)]
+    A[Inicio] --> B[Mensagem de texto]
+    B --> C[Texto para bits]
+    C --> D[Codificacao Manchester]
     D --> E[Modulacao digital]
-
-    E --> E1[BPSK (1 bit por simbolo)]
-    E --> E2[QPSK (2 bits por simbolo)]
-
-    E1 --> F[Canal AWGN (SNR em dB)]
-    E2 --> F
-
+    E --> F[Canal AWGN]
     F --> G[Demodulacao]
     G --> H[Decodificacao Manchester]
     H --> I[Bits recebidos]
-    I --> J[Conversao bits -> texto]
+    I --> J[Conversao para texto]
     J --> K[Calculo da BER]
     K --> L[Fim]
 
