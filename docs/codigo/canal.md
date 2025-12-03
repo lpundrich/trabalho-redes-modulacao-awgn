@@ -1,4 +1,5 @@
 ## Canal AWGN ##
+
 Implementa um canal AWGN (Additive White Gaussian Noise), que é o modelo clássico de ruído usado em comunicações digitais.
 Em resumo, ele pega o vetor de símbolos (BPSK ou QPSK) e adiciona ruído gaussiano com intensidade controlada pela SNR.
 
@@ -34,15 +35,23 @@ def adicionar_ruido_awgn(simbolos: np.ndarray, snr_db: float) -> np.ndarray:
 ---
 
 
-**adicionar_ruido_awgn(simbolos, snr_db)**
+**Função adicionar_ruido_awgn**
 
 Objetivo:
 Somar ruído gaussiano nos símbolos, usando um dado valor de SNR em dB.
 
 
 ```python
+# src/canal.py
+
+import numpy as np
+
 def adicionar_ruido_awgn(simbolos: np.ndarray, snr_db: float) -> np.ndarray:
+    """
+    Adiciona ruído AWGN a um vetor de símbolos (reais ou complexos).
+    """
 ```
+
 Recebe:
 - simbolos: contendo a sequÊncia transmitida
     - pode ser real (BPSK, Manchester)
@@ -51,7 +60,7 @@ Recebe:
 
 
 ---
-1. Converte SNR de dB para linear
+1. **Converte SNR de dB para linear**
 ```python
 snr_linear = 10 ** (snr_db / 10)
 ```
@@ -64,7 +73,7 @@ Fórmula:
 
 
 ---
-2. Calcula a energia média dos símbolos
+2. **Calcula a energia média dos símbolos**
 ```python
 # Energia média dos símbolos (vale para BPSK e QPSK normalizada)
     energia_simbolo = np.mean(np.abs(simbolos) ** 2)
@@ -80,7 +89,7 @@ Logo, isso funciona tanto para BPSK quanto para QPSK.
 
 
 ---
-3. Calcula a variância do ruído
+3. **Calcula a variância do ruído**
 ```python
 # Variância total do ruído
     sigma2 = energia_simbolo / snr_linear
@@ -97,7 +106,7 @@ Isso define quanta interferência queremos adicionar.
 
 
 ---
-4. Gera ruído de acordo com o tipo de dado
+4. **Gera ruído de acordo com o tipo de dado**
 ```python
 if np.iscomplexobj(simbolos):
         # Para sinal complexo, ruído em I e Q com sigma2/2 cada
@@ -126,7 +135,7 @@ Para sinal real (BPSK, Manchester):
 
 
 ---
-5. Retorna os símbolos com ruído
+5. **Retorna os símbolos com ruído**
 ```python
 return simbolos + ruido
 ```
