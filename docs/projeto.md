@@ -7,21 +7,21 @@ texto → bits → codificação Manchester → modulação (BPSK/QPSK) → cana
 flowchart TD
 
     A[Início] --> B[Mensagem de texto: 'REDES DE COMPUTADORES 2025']
-    B --> C[Conversão texto → bits (ASCII, 8 bits por caractere)]
-    C --> D[Codificação Manchester 0→(-1,+1), 1→(+1,-1)]
-    D --> E[Modulação digital]
+    B --> C[Conversao texto -> bits (ASCII, 8 bits por caractere)]
+    C --> D[Codificacao Manchester 0->(-1,+1), 1→(+1,-1)]
+    D --> E[Modulacao digital]
 
-    E --> E1[BPSK (1 bit por símbolo)]
-    E --> E2[QPSK (2 bits por símbolo)]
+    E --> E1[BPSK (1 bit por simbolo)]
+    E --> E2[QPSK (2 bits por simbolo)]
 
     E1 --> F[Canal AWGN (SNR em dB)]
     E2 --> F
 
-    F --> G[Demodulação]
-    G --> H[Decodificação Manchester]
+    F --> G[Demodulacao]
+    G --> H[Decodificacao Manchester]
     H --> I[Bits recebidos]
-    I --> J[Conversão bits → texto]
-    J --> K[Cálculo da BER]
+    I --> J[Conversão bits -> texto]
+    J --> K[Calculo da BER]
     K --> L[Fim]
 ```
 
