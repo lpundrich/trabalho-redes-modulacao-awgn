@@ -50,7 +50,7 @@ Recebe:
 - snr_db: valor da SNR desejada em decibéis
 
 
-1. ## Converter SNR de dB para linear ##
+1. Converte SNR de dB para linear
 ```python
 snr_linear = 10 ** (snr_db / 10)
 ```
@@ -62,7 +62,7 @@ Fórmula:
 ![exemplos SNR dB para linear](img/exSNRlinear.png)
 
 
-2. ## Calcula a energia média dos símbolos ##
+2. Calcula a energia média dos símbolos
 ```python
 # Energia média dos símbolos (vale para BPSK e QPSK normalizada)
     energia_simbolo = np.mean(np.abs(simbolos) ** 2)
@@ -77,7 +77,7 @@ Fórmula:
 Logo, isso funciona tanto para BPSK quanto para QPSK.
 
 
-4. ## Calcula a variância do ruído ##
+4. Calcula a variância do ruído
 ```python
 # Variância total do ruído
     sigma2 = energia_simbolo / snr_linear
