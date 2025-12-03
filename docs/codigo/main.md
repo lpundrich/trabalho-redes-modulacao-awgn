@@ -203,3 +203,57 @@ def main():
 ```
 
 Garante que a pasta results/ exista (cria se não existir).
+
+5.1. Parte 1 - Demonstração Manchester
+```python
+    # ============================================================
+    # Parte 1 — Demonstração Manchester
+    # ============================================================
+
+    print("=" * 70)
+    print("DEMONSTRAÇÃO: Manchester + Canal AWGN")
+    print("=" * 70)
+
+    mensagem = "REDES DE COMPUTADORES 2025"
+
+    with open("results/pipeline_manchester_log.txt", "w", encoding="utf-8") as flog:
+        flog.write("Demonstração do pipeline completo com Manchester + canal AWGN\n")
+        flog.write(f"Mensagem original: {mensagem}\n\n")
+```
+
+- Define a mensagem fixa.
+- Abre o arquivo de log para escrever os resultados.
+
+<br>
+<br>
+
+```python
+for snr_db in [2, 5, 10]:
+            mensagem_rx, ber, nbits = transmitir_mensagem_manchester(mensagem, snr_db)
+
+            bloco = (
+                "-" * 60 + "\n"
+                f"SNR = {snr_db} dB\n"
+                f"Número de bits transmitidos: {nbits}\n"
+                f"Mensagem transmitida : {mensagem}\n"
+                f"Mensagem recebida    : {mensagem_rx}\n"
+                f"BER = {ber:.6f}\n"
+                + "-" * 60 + "\n\n"
+            )
+
+            print(bloco)
+            flog.write(bloco)
+```
+
+
+Pra cada SNR (2, 5, 10 dB):
+- Chama transmitir_mensagem_manchester → executa TODO o pipeline:
+    texto → bits → Manchester → AWGN → decisão → decodificação → texto → BER
+- Formata um bloco com:
+    - SNR
+    - nº de bits
+    - mensagem original
+    - mensagem recebida
+    - BER
+- Imprime esse bloco no terminal e grava no log em results/pipeline_manchester_log.txt.
+
