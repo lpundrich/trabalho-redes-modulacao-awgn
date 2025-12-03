@@ -148,7 +148,6 @@ def transmitir_mensagem_manchester(mensagem: str, snr_db: float):
         - 0 → [-1, +1]
         - 1 → [+1, -1]
     - niveis_tx_np é só para transformar em array NumPy para facilitar o uso no canal.
-<br>
 
 
 - **Passa pelo canal AWGN**
@@ -159,7 +158,7 @@ def transmitir_mensagem_manchester(mensagem: str, snr_db: float):
     - adicionar_ruido_awgn soma ruído gaussiano controlado por snr_db.
     - Agora você tem um sinal “sujo”: os valores não são mais exatamente +1 e −1, são algo tipo 0.8, −1.2, etc.
 
-
+<br>
 - **Decisão de nível**
     ```python
     # decisão de nível
@@ -168,7 +167,6 @@ def transmitir_mensagem_manchester(mensagem: str, snr_db: float):
 
     Regra: se o valor > 0 → decide que é +1, se ≤ 0 → decide que é −1.
     Isso é a decisão de símbolo com limiar 0.
-<br>
 
 
 - **Decodificação Manchester → bits / Bits → texto**
