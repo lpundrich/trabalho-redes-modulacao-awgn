@@ -24,7 +24,7 @@ flowchart TD
     J --> K[Calculo da BER]
     K --> L[Fim]
 
-
+```
 
 
 ## 1. Geração de mensagem
