@@ -3,6 +3,7 @@
 O trabalho implementa, em Python, uma cadeia completa de transmissão digital, parecida com o que acontece num sistema real de comunicação (modem, Wi-Fi, rádio digital):
 texto → bits → codificação Manchester → modulação (BPSK/QPSK) → canal AWGN → demodulação → decodificação Manchester → bits → texto + cálculo da BER
 
+```mermaid
 flowchart TD
 
     A[Início] --> B[Mensagem de texto: 'REDES DE COMPUTADORES 2025']
@@ -22,7 +23,7 @@ flowchart TD
     I --> J[Conversão bits → texto]
     J --> K[Cálculo da BER]
     K --> L[Fim]
-
+```
 
 
 
