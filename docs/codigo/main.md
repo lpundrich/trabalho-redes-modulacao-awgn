@@ -127,14 +127,14 @@ def transmitir_mensagem_manchester(mensagem: str, snr_db: float):
 
     return mensagem_rx, ber, len(bits_tx)
 ```
+<br>
 
 - **Texto → bits**
-```python
-bits_tx = texto_para_bits(mensagem)
-```
-
-→ Usa texto_para_bits (de src/mensagem.py).
-→ Cada caractere vira 8 bits (ASCII).
+    ```python
+    bits_tx = texto_para_bits(mensagem)
+    ```
+    - Usa texto_para_bits (de src/mensagem.py).
+    - Cada caractere vira 8 bits (ASCII).
 
 
 
