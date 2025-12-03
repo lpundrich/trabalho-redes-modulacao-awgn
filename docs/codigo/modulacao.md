@@ -72,13 +72,13 @@ Aqui entram símbolos complexos e 2 bits por símbolo.
 Objetivo:
 Agrupar bits de 2 em 2 e mapear em um ponto na constelação QPSK (I+jQ).
 Passos:
-1. Garante número par de bits (no main.py isso já foi feito).
-2. Percorre a lista em passos de 2.
-3. Aplica mapeamento Gray, normalizado por 1/√2:
+- Garante número par de bits (no main.py isso já foi feito).
+- Percorre a lista em passos de 2.
+- Aplica mapeamento Gray, normalizado por 1/√2:
 
-![Mapeamento Gray](img/mapeamentoGray.png)
+    ![Mapeamento Gray](img/mapeamentoGray.png)
 
-4. Cria um numpy.array complexo com esses símbolos.
+- Cria um numpy.array complexo com esses símbolos.
 
 ```python
 def qpsk_modular(bits: List[int]) -> np.ndarray:
@@ -121,7 +121,7 @@ def qpsk_modular(bits: List[int]) -> np.ndarray:
 
 Objetivo:
 Pegar os símbolos complexos (com ruído) e voltar para os pares de bits.
-Passos típicos:
+Passos:
 1.	Para cada símbolo s:
     - I = s.real
     - Q = s.imag
