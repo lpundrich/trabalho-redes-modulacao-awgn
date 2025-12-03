@@ -1,5 +1,5 @@
 
-1. Estrutura geral do Main
+1. **Estrutura geral do Main**
 
 ```python
 # main.py
@@ -35,7 +35,7 @@ Importando as funções que implementam:
 
 ---
 
-2. Calcula BER (Bit Error Rate)
+2. **Calcula BER (Bit Error Rate)**
 ```python
 def calcular_ber(bits_tx, bits_rx) -> float:
     """Calcula a taxa de erro de bits (BER)."""
@@ -55,7 +55,7 @@ Isso implementa diretamente a fórmula teórica:
 
 ---
 
-3. Simula BER (parte da modulação BPSK/QPSK)
+3. **Simula BER (parte da modulação BPSK/QPSK)**
 ```python
 def simular_ber(modular, demodular, snrs_db, num_bits: int, nome: str):
     """Simula BER x SNR para uma modulação genérica."""
@@ -104,7 +104,7 @@ No final, devolve a lista de BERs (um valor pra cada SNR).
 
 ---
 
-4. Transmissão mensagem manchester (pipeline completo da mensagem fixa)
+4. **Transmissão mensagem manchester (pipeline completo da mensagem fixa)**
 ```python
 def transmitir_mensagem_manchester(mensagem: str, snr_db: float):
     """Pipeline completo com Manchester + canal AWGN."""
@@ -150,7 +150,7 @@ niveis_tx_np = np.array(niveis_tx, dtype=float)
 ```
 ---
 
-- Passa pelo canal AWGN
+- **Passa pelo canal AWGN**
     - adicionar_ruido_awgn soma ruído gaussiano controlado por snr_db.
     - Agora você tem um sinal “sujo”: os valores não são mais exatamente +1 e −1, são algo tipo 0.8, −1.2, etc.
 
@@ -159,7 +159,7 @@ niveis_rx_continuo = adicionar_ruido_awgn(niveis_tx_np, snr_db)
 ```
 ---
 
-- Decisão de nível
+- **Decisão de nível**
 Regra: se o valor > 0 → decide que é +1, se ≤ 0 → decide que é −1.
 Isso é a decisão de símbolo com limiar 0.
 ```python
@@ -168,7 +168,7 @@ Isso é a decisão de símbolo com limiar 0.
 ```
 ---
 
-- Decodificação Manchester → bits
+- **Decodificação Manchester → bits**
     - manchester_decodificar pega os pares de níveis e decide se foi 0 ou 1.
     - Ele também é robusto a erro: se o par não bater justamente com o ideal, analisa o valor médio.
 - Bits → texto
@@ -180,7 +180,7 @@ Isso é a decisão de símbolo com limiar 0.
 ```
 ---
 
-- Cálculo da BER da mensagem
+- **Cálculo da BER da mensagem**
     - Compara bits_tx (originais) com bits_rx (decodificados) → BER.
     - Também retorna o número de bits, para mostrar no log.
 
