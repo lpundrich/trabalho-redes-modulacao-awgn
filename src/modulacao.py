@@ -28,12 +28,6 @@ def bpsk_demodular(simbolos: np.ndarray) -> List[int]:
     return bits.tolist()
 
 
-
-import numpy as np
-from typing import List
-
-# ... (suas funções BPSK já aqui em cima)
-
 def qpsk_modular(bits: List[int]) -> np.ndarray:
     """
     Modulação QPSK com mapeamento Gray, normalizada para energia média 1.

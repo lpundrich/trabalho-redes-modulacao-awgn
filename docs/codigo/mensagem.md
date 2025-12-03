@@ -1,13 +1,10 @@
-## Explicação detalhada do código
-
-1. Mensagem Texto ⇄ Bits
+**Mensagem Texto ⇄ Bits**
 ```text
 mensagem.py
 ```
 
 Este módulo cuida da interface entre o mundo humano (texto) e o mundo digital (bits).
 
-![mensagem](img/mensagem.png)
 
 ```python
 # src/mensagem.py
@@ -43,7 +40,6 @@ def bits_para_texto(bits: list[int]) -> str:
     return ''.join(chars)
 
 ```
-
 
 
 
