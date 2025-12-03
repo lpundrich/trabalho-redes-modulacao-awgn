@@ -132,11 +132,11 @@ return simbolos + ruido
 ```
 
 O ruído é aditivo, então o canal final é:
-    y = x + n
+y = x + n
 
 onde:
-x = símbolo transmitido.
-n = ruído AWGN.
+x = símbolo transmitido,
+n = ruído AWGN,
 y = símbolo recebido.
 
 Esse valor y vai depois para:
