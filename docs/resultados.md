@@ -169,7 +169,7 @@ Porque:
 
 ---
 
-# 3. **Conclusões Gerais do Experimento**
+# 3. **Conclusões Gerais**
 
 ### **Sobre o canal:**
 
