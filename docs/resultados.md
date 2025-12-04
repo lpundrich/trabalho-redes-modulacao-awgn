@@ -163,8 +163,6 @@ Porque:
 
 ![grafico](img/grafico.png)
 
-A figura que você anexou confirma a teoria:
-
 * Curvas **descendentes exponenciais**, como esperado
 * QPSK e BPSK praticamente sobrepostas
 * BER ≤ 10⁻³ em torno de **10 dB**
