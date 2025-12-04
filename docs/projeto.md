@@ -1,7 +1,7 @@
 # Simulação de Codificação de Canal e Modulação Digital em Canal AWGN
 
 O trabalho implementa, em Python, uma cadeia completa de transmissão digital, parecida com o que acontece num sistema real de comunicação (modem, Wi-Fi, rádio digital):
-texto → bits → codificação Manchester → modulação (BPSK/QPSK) → canal AWGN → demodulação → decodificação Manchester → bits → texto + cálculo da BER
+texto → bits → codificação Manchester → modulação (BPSK/QPSK) → canal AWGN → demodulação → decodificação Manchester → bits → texto + cálculo da BER (Bit Error Rate).
 
 ```mermaid
 flowchart TD
@@ -33,7 +33,7 @@ flowchart TD
 
 ## 3. Transmissão pelo canal com ruído (AWGN)
 - Essa sequência de níveis (+1/−1) passa por um canal AWGN (Additive White Gaussian Noise → ruído branco gaussiano aditivo).
-- O nível de ruído é controlado pelo SNR em dB (2, 5, 10 dB etc).
+- O nível de ruído é controlado pelo SNR (Signal-to-Noise Ratio) em dB (2, 5, 10 dB etc).
 - O canal “suja” a forma de onda, simulando interferência, ruído térmico etc.
 
 ## 4. Decisão de nível + decodificação Manchester
