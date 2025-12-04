@@ -167,13 +167,6 @@ Porque:
 * QPSK e BPSK praticamente sobrepostas
 * BER ≤ 10⁻³ em torno de **10 dB**
 
-Isso confirma:
-
-✔ Implementação correta da modulação
-✔ Canal AWGN funcionando
-✔ Demoduladores corretos
-✔ Tabela CSV e gráfico coerentes
-
 ---
 
 # 3. **Conclusões Gerais do Experimento**
