@@ -5,16 +5,16 @@ Mensagem original: REDES DE COMPUTADORES 2025
 SNR = 2 dB
 Número de bits transmitidos: 208
 Mensagem transmitida : REDES DE COMPUTADORES 2025
-Mensagem recebida    : REDES$E ÃOMÐTTQDNV]Ã(:0
-BER = 0.091346
+Mensagem recebida    : RLfES DD SoMPETPFoVD%2:5
+BER = 0.105769
 ------------------------------------------------------------
 
 ------------------------------------------------------------
 SNR = 5 dB
 Número de bits transmitidos: 208
 Mensagem transmitida : REDES DE COMPUTADORES 2025
-Mensagem recebida    : EDLS FE COLQEÔADORES 2425
-BER = 0.043269
+Mensagem recebida    : REDES$DE OMPUTAFOREÓ(2135
+BER = 0.033654
 ------------------------------------------------------------
 
 ------------------------------------------------------------
