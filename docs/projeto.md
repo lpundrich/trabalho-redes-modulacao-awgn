@@ -2,13 +2,13 @@
 
 O projeto é dividido em duas pipelines.
 - A primeira transmite uma mensagem real usando codificação Manchester e simula um canal com ruído AWGN para observar a recuperação da informação e calcular a BER:
-<br>
+
 texto → bits → codificação Manchester → canal AWGN  → decodificação Manchester → bits → texto + cálculo da BER (Bit Error Rate).
 <br>
 
 
 - A segunda pipeline é dedicada à análise estatística: gera bits aleatórios, aplica modulação BPSK e QPSK, passa pelo mesmo canal ruidoso e calcula curvas BER×SNR que mostram o desempenho de cada modulação:
-<br>
+
 bits → modulação (BPSK/QPSK) → canal AWGN → demodulação → bits →Cálculo de BER →gráfico BER x SNR
 <br>
 
