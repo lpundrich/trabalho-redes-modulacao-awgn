@@ -1,24 +1,16 @@
 # Simulação de Codificação de Canal e Modulação Digital em Canal AWGN
 
-O trabalho implementa, em Python, uma cadeia completa de transmissão digital, parecida com o que acontece num sistema real de comunicação (modem, Wi-Fi, rádio digital):
-texto → bits → codificação Manchester → modulação (BPSK/QPSK) → canal AWGN → demodulação → decodificação Manchester → bits → texto + cálculo da BER (Bit Error Rate).
+O projeto é dividido em duas pipelines.
+- A primeira transmite uma mensagem real usando codificação Manchester e simula um canal com ruído AWGN para observar a recuperação da informação e calcular a BER:
+<br>
+texto → bits → codificação Manchester → canal AWGN  → decodificação Manchester → bits → texto + cálculo da BER (Bit Error Rate).
+<br>
 
-```mermaid
-flowchart TD
 
-    A[Inicio] --> B[Mensagem de texto]
-    B --> C[Texto para bits]
-    C --> D[Codificacao Manchester]
-    D --> E[Modulacao digital]
-    E --> F[Canal AWGN]
-    F --> G[Demodulacao]
-    G --> H[Decodificacao Manchester]
-    H --> I[Bits recebidos]
-    I --> J[Conversao para texto]
-    J --> K[Calculo da BER]
-    K --> L[Fim]
-
-```
+- A segunda pipeline é dedicada à análise estatística: gera bits aleatórios, aplica modulação BPSK e QPSK, passa pelo mesmo canal ruidoso e calcula curvas BER×SNR que mostram o desempenho de cada modulação:
+<br>
+bits → modulação (BPSK/QPSK) → canal AWGN → demodulação → bits →Cálculo de BER →gráfico BER x SNR
+<br>
 
 
 ## 1. Geração de mensagem
