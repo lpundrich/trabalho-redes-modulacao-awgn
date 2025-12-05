@@ -13,11 +13,11 @@ bits → modulação (BPSK/QPSK) → canal AWGN → demodulação → bits →C�
 <br>
 
 
-## 1. Geração de mensagem
+## 1. Mensagem usando codificação Manchester
 - Usa uma mensagem de texto: REDES DE COMPUTADORES 2025.
 - Converte cada caractere para 8 bits (ASCII): Ex.: 'R' → 01010010.
 
-## 2. Codificação de linha Manchester
+# Codificação de linha Manchester #
 - Cada bit é mapeado em dois níveis (+1 e −1) no tempo:
     - bit 0 → [-1, +1]
     - bit 1 → [+1, -1]
