@@ -5,7 +5,7 @@ O projeto é dividido em duas pipelines.
 
 texto → bits → codificação Manchester → canal AWGN  → decodificação Manchester → bits → texto + cálculo da BER (Bit Error Rate).
 <br>
-
+<br>
 
 - A segunda pipeline é dedicada à análise estatística: gera bits aleatórios, aplica modulação BPSK e QPSK, passa pelo mesmo canal ruidoso e calcula curvas BER×SNR que mostram o desempenho de cada modulação:
 
