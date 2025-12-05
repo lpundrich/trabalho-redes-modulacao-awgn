@@ -1,4 +1,4 @@
-# 📡 Simulação de Codificação de Canal e Modulação Digital em Canal AWGN
+# Simulação de Codificação de Canal e Modulação Digital em Canal AWGN
 
 Trabalho da disciplina **Redes de Computadores** – UNISINOS
 Aluno(a): **Luana Pündrich**
@@ -98,7 +98,7 @@ O projeto possui **duas pipelines independentes**:
 
 ---
 
-### 🔵 Pipeline 1 — Transmissão de Texto com Codificação Manchester
+### Pipeline 1 — Transmissão de Texto com Codificação Manchester
 
 ```
 texto → bits → codificação Manchester → canal AWGN
@@ -138,7 +138,7 @@ Desfaz a codificação com tolerância ao ruído:
 
 ---
 
-### 🔵 Pipeline 2 — Simulação BER × SNR para BPSK e QPSK
+### Pipeline 2 — Simulação BER × SNR para BPSK e QPSK
 
 ```
 bits aleatórios → modulação (BPSK/QPSK) → canal AWGN
@@ -150,7 +150,7 @@ bits aleatórios → modulação (BPSK/QPSK) → canal AWGN
 
 ### 3.3. Modulação Digital (`src/modulacao.py`)
 
-#### ✔ BPSK
+#### BPSK
 
 ```
 0 → -1
@@ -168,7 +168,7 @@ Decisão por limiar:
 
 ---
 
-#### ✔ QPSK (2 bits por símbolo)
+#### QPSK (2 bits por símbolo)
 
 Usa **mapeamento Gray normalizado**:
 
